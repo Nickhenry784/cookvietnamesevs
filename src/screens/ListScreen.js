@@ -17,15 +17,18 @@ import { ScrollView } from "react-native-gesture-handler";
 const windowWidth = Dimensions.get('screen').width;
 const windowHeight = Dimensions.get('screen').height;
 const dataButton = [
-  {id: 1, image: images.phobo, background: [images.bgbunbohue1,images.bgbunbohue2,images.bgbunbohue3,images.bgbunbohue4,images.bgbunbohue5,images.bgbunbohue6,images.bgbunbohue7,images.bgbunbohue8]}, 
-  {id: 2, image: images.gachienmam, background: [images.bggachienmam,images.bggachienmam2]}, 
-  {id: 3, image: images.garoti, background: [images.bggaroti, images.bggaroti2]}, 
-  {id: 4, image: images.banhxeo, background: [images.bgbanhxeo, images.bgbanhxeo2, images.bgbanhxeo3, images.bgbanhxeo4]},
-  {id: 5, image: images.banhdalon, background: [images.bgbandalon, images.bgbandalon2, images.bgbandalon3, images.bgbandalon4, images.bgbandalon5, images.bgbandalon6,]},
-  {id: 6, image: images.phoga, background: [images.bgphoga, images.bgphoga2,images.bgphoga3,images.bgphoga4,images.bgphoga5,]},    
-  {id: 7, image: images.ramcuon, background: [images.bgramcuon,images.bgramcuon2,images.bgramcuon3,]},  
-  {id: 8, image: images.raumuong, background: [images.bgraumuong,images.bgraumuong2,images.bgraumuong3,]},  
-  {id: 9, image: images.chagio, background: [images.bgchagio,images.bgchagio1,images.bgchagio2]},  
+  {id: 1, image: images.Aries, background: images.bgAries}, 
+  {id: 2, image: images.Taurus, background: images.bgTaurus}, 
+  {id: 3, image: images.Pisces, background: images.bgPisces}, 
+  {id: 4, image: images.Leo, background: images.bgLeo},
+  {id: 5, image: images.Sagittarius, background: images.bgSagittarius},
+  {id: 6, image: images.Scorpion, background: images.bgScorpion},    
+  {id: 7, image: images.Virgo, background: images.bgVirgo},  
+  {id: 8, image: images.Gemini, background: images.bgGemini},  
+  {id: 9, image: images.Cancer, background: images.bgCancer},
+  {id: 10, image: images.Capricorn, background: images.bgCapricorn},  
+  {id: 12, image: images.Libra, background: images.bgLibra},    
+  {id: 11, image: images.Aquarius, background: images.bgAquarius},  
 ];
 
 const numCol = 3;
@@ -52,8 +55,11 @@ const ListScreen = () => {
 
 
   return (
-    <ImageBackground style={appStyle.homeView} source={images.bgmenu}>
+    <ImageBackground style={appStyle.homeView} source={images.bg1}>
         <View style={appStyle.appBar}>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Image source={images.buttonback} style={appStyle.scoreStyle} />
+          </TouchableOpacity>
           <TouchableOpacity >
             <Image source={images.note} style={appStyle.scoreStyle} />
           </TouchableOpacity>
@@ -94,7 +100,7 @@ export const appStyle = StyleSheet.create({
     marginTop: 20,
     alignItems: 'center',
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
   },
   turnView: {
     width: windowWidth * 0.15,
@@ -112,7 +118,7 @@ export const appStyle = StyleSheet.create({
   centerView: {
     marginTop: 30,
     width: windowWidth,
-    height: windowHeight * 0.6,
+    height: windowHeight * 0.8,
     alignItems: 'center',
     justifyContent: 'center',
   },

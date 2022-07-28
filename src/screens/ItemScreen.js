@@ -32,18 +32,12 @@ const ItemScreen = ({navigation, route}) => {
 
   return (
       <ScrollView>
-        <ImageBackground source={background[index]} style={appStyle.scrollStyle}>
-        <View style={appStyle.bottomView}>
-          <TouchableOpacity onPress={() => onClickBackBtn()}>
-            <Image source={images.back} style={appStyle.btn} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={images.home} style={appStyle.btn} />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => onClickNextBtn()}>
-            <Image source={images.next} style={appStyle.btn} />
-          </TouchableOpacity>
-      </View>
+        <ImageBackground source={background} style={appStyle.scrollStyle}>
+          <View style={appStyle.backView}>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <Image source={images.buttonback} style={appStyle.startBtn} />
+            </TouchableOpacity>
+          </View>
         </ImageBackground>
       </ScrollView>
   );
@@ -66,7 +60,7 @@ export const appStyle = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   startBtn: {
-    width: windowWidth * 0.3,
+    width: windowWidth * 0.1,
     height: windowHeight * 0.1,
     resizeMode: 'contain',
   },
@@ -74,6 +68,11 @@ export const appStyle = StyleSheet.create({
     width: windowWidth * 0.3,
     height: windowHeight * 0.1,
     resizeMode: 'contain',
+  },
+  backView: {
+    position: 'absolute',
+    top: '3%',
+    left: '3%',
   },
   bottomView: {
     width: windowWidth,

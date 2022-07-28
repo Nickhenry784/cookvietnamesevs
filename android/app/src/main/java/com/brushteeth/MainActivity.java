@@ -1,4 +1,4 @@
-package com.amazon.cookvietnamesevs;
+package com.amazon.zodiacmystery;
 
 import com.facebook.react.ReactActivity;
 

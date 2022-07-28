@@ -44,11 +44,11 @@ const Home = () => {
 
 
   return (
-    <ImageBackground style={appStyle.homeView} source={images.bgstart}>
+    <ImageBackground style={appStyle.homeView} source={images.bg}>
       <View style={appStyle.appBar}>
         <TouchableOpacity onPress={onClickTurnButton}>
           <View style={appStyle.turnView}>
-            <Image source={images.view} style={appStyle.scoreStyle} />
+            <Image source={images.buttonbuy} style={appStyle.scoreStyle} />
             <Text style={appStyle.turnText}>{points.value}</Text>
           </View>
         </TouchableOpacity>
@@ -58,14 +58,14 @@ const Home = () => {
       </View>
       <View style={appStyle.bottomView}>
         <TouchableOpacity onPress={onClickStartButton}>
-          <Image source={images.watchnow} style={appStyle.startBtn} />
+          <Image source={images.buttonwatch} style={appStyle.startBtn} />
         </TouchableOpacity>
       </View>
       {popup && (
       <View style={appStyle.popupView}>
-        <ImageBackground style={appStyle.popupImage} source={images.bangnote}>
+        <ImageBackground style={appStyle.popupImage} source={images.board}>
           <TouchableOpacity onPress={() => setPopup(false)}>
-            <Image source={images.OKnote} style={appStyle.okBtn} />
+            <Image source={images.buttonok} style={appStyle.okBtn} />
           </TouchableOpacity>
         </ImageBackground>
       </View>)}
@@ -120,7 +120,7 @@ export const appStyle = StyleSheet.create({
     resizeMode: 'contain',
   },
   bottomView: {
-    flex: 0.5,
+    flex: 0.3,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
@@ -144,8 +144,8 @@ export const appStyle = StyleSheet.create({
     resizeMode: 'contain',
   },
   startBtn: {
-    width: windowWidth * 0.3,
-    height: windowHeight * 0.1,
+    width: windowWidth * 0.4,
+    height: windowHeight * 0.3,
     resizeMode: 'contain',
   },
   scoreStyle: {
