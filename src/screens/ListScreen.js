@@ -17,21 +17,12 @@ import { ScrollView } from "react-native-gesture-handler";
 const windowWidth = Dimensions.get('screen').width;
 const windowHeight = Dimensions.get('screen').height;
 const dataButton = [
-  {id: 1, image: images.Aries, background: images.bgAries}, 
-  {id: 2, image: images.Taurus, background: images.bgTaurus}, 
-  {id: 3, image: images.Pisces, background: images.bgPisces}, 
-  {id: 4, image: images.Leo, background: images.bgLeo},
-  {id: 5, image: images.Sagittarius, background: images.bgSagittarius},
-  {id: 6, image: images.Scorpion, background: images.bgScorpion},    
-  {id: 7, image: images.Virgo, background: images.bgVirgo},  
-  {id: 8, image: images.Gemini, background: images.bgGemini},  
-  {id: 9, image: images.Cancer, background: images.bgCancer},
-  {id: 10, image: images.Capricorn, background: images.bgCapricorn},  
-  {id: 12, image: images.Libra, background: images.bgLibra},    
-  {id: 11, image: images.Aquarius, background: images.bgAquarius},  
+  {id: 1, image: images.a1, background: [images.bga1,images.bga2,images.bga3,images.bga4,images.bga5,images.bga6]}, 
+  {id: 2, image: images.a2, background: [images.bga7,images.bga8,images.bga9,images.bga10,images.bga11,images.bga12,]}, 
+  {id: 3, image: images.a3, background: [images.bga13,images.bga14,images.bga15,images.bga16,images.bga17,]}, 
+  {id: 4, image: images.a4, background: [images.bga18,images.bga19,images.bga20,images.bga21,images.bga22,]},
 ];
 
-const numCol = 3;
 
 const ListScreen = () => {
   const navigation = useNavigation();
@@ -48,6 +39,10 @@ const ListScreen = () => {
     navigation.navigate("Item", {background: item.background});
   }
 
+  const onClickTurnButton = () => {
+    navigation.navigate("BUY");
+  }
+
 
   const onClickBackButton = () => {
     navigation.goBack();
@@ -57,18 +52,20 @@ const ListScreen = () => {
   return (
     <ImageBackground style={appStyle.homeView} source={images.bg1}>
         <View style={appStyle.appBar}>
-          <TouchableOpacity onPress={() => navigation.goBack()}>
-            <Image source={images.buttonback} style={appStyle.scoreStyle} />
+          <TouchableOpacity onPress={onClickBackButton}>
+            <Image source={images.back} style={appStyle.scoreStyle} />
           </TouchableOpacity>
-          <TouchableOpacity >
-            <Image source={images.note} style={appStyle.scoreStyle} />
+          <TouchableOpacity onPress={onClickTurnButton}>
+            <View style={appStyle.turnView}>
+              <Image source={images.view} style={appStyle.scoreStyle} />
+              <Text style={appStyle.turnText}>{points.value}</Text>
+            </View>
           </TouchableOpacity>
         </View>
         <View style={appStyle.centerView}>
           <FlatList 
             data={dataButton}
             scrollEnabled={false}
-            numColumns={numCol}
             renderItem={({item}) => (
               <TouchableOpacity onPress={() => onClickStartButton(item)}>
                 <Image source={item.image} style={appStyle.itemView} />
@@ -94,10 +91,9 @@ export const appStyle = StyleSheet.create({
     resizeMode: 'contain',
   },
   appBar: {
-    flex: 0.1,
+    height: windowHeight * 0.1,
     width: '100%',
     paddingHorizontal: 10,
-    marginTop: 20,
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -110,10 +106,9 @@ export const appStyle = StyleSheet.create({
     alignItems: 'center',
   },
   itemView: {
-    width: windowWidth * 0.2,
-    height: windowHeight * 0.2,
+    width: windowWidth * 0.6,
+    height: windowHeight * 0.15,
     resizeMode: 'contain',
-    marginHorizontal: 10,
   },
   centerView: {
     marginTop: 30,
@@ -126,6 +121,11 @@ export const appStyle = StyleSheet.create({
     width: windowWidth * 0.1,
     height: windowWidth * 0.1,
     resizeMode: 'contain',
+  },
+  turnText: {
+    fontSize: 30,
+    color: 'black',
+    fontWeight: 'bold',
   },
 });
 

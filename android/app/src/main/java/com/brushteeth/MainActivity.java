@@ -1,4 +1,4 @@
-package com.amazon.zodiacmystery;
+package com.amazon.cokcakemk;
 
 import com.facebook.react.ReactActivity;
 

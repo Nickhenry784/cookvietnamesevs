@@ -12,6 +12,13 @@ import { images } from "../assets";
 const windowWidth = Dimensions.get('screen').width;
 const windowHeight = Dimensions.get('screen').height;
 
+const dataButton = [
+  {id: 1, image: images.a1, background: [images.bga1,images.bga2,images.bga3,images.bga4,images.bga5,images.bga6]}, 
+  {id: 2, image: images.a2, background: [images.bga7,images.bga8,images.bga9,images.bga10,images.bga11,images.bga12,]}, 
+  {id: 3, image: images.a3, background: [images.bga13,images.bga14,images.bga15,images.bga16,images.bga17,]}, 
+  {id: 4, image: images.a4, background: [images.bga18,images.bga19,images.bga20,images.bga21,images.bga22,]},
+];
+
 const ItemScreen = ({navigation, route}) => {
   const {background} = route.params;
   const [index, setIndex] = useState(0);
@@ -26,16 +33,21 @@ const ItemScreen = ({navigation, route}) => {
   const onClickBackBtn = () => {
     if(index !== 0){
       setIndex(index - 1);
+    }else{
+      navigation.goBack();
     }
   }
 
 
   return (
       <ScrollView>
-        <ImageBackground source={background} style={appStyle.scrollStyle}>
+        <ImageBackground source={background[index]} style={appStyle.scrollStyle}>
           <View style={appStyle.backView}>
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Image source={images.buttonback} style={appStyle.startBtn} />
+            <TouchableOpacity onPress={() => onClickBackBtn()}>
+              <Image source={images.back} style={appStyle.startBtn} />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => onClickNextBtn()}>
+              <Image source={images.next} style={appStyle.startBtn} />
             </TouchableOpacity>
           </View>
         </ImageBackground>
@@ -71,8 +83,12 @@ export const appStyle = StyleSheet.create({
   },
   backView: {
     position: 'absolute',
-    top: '3%',
-    left: '3%',
+    width: '100%',
+    paddingHorizontal: 20,
+    bottom: '0%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between'
   },
   bottomView: {
     width: windowWidth,

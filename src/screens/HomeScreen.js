@@ -27,8 +27,6 @@ const Home = () => {
 
   const points = useSelector(state => state.points);
 
-  const [popup, setPopup] = useState(false);
-
   const onClickStartButton = (item) => {
     if (points.value === 0) {
       Alert.alert('Please buy more turn');
@@ -44,31 +42,20 @@ const Home = () => {
 
 
   return (
-    <ImageBackground style={appStyle.homeView} source={images.bg}>
+    <ImageBackground style={appStyle.homeView} source={images.bgstart}>
       <View style={appStyle.appBar}>
         <TouchableOpacity onPress={onClickTurnButton}>
           <View style={appStyle.turnView}>
-            <Image source={images.buttonbuy} style={appStyle.scoreStyle} />
+            <Image source={images.view} style={appStyle.scoreStyle} />
             <Text style={appStyle.turnText}>{points.value}</Text>
           </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => setPopup(true)}>
-          <Image source={images.note} style={appStyle.buyImage} />
         </TouchableOpacity>
       </View>
       <View style={appStyle.bottomView}>
         <TouchableOpacity onPress={onClickStartButton}>
-          <Image source={images.buttonwatch} style={appStyle.startBtn} />
+          <Image source={images.watch} style={appStyle.startBtn} />
         </TouchableOpacity>
       </View>
-      {popup && (
-      <View style={appStyle.popupView}>
-        <ImageBackground style={appStyle.popupImage} source={images.board}>
-          <TouchableOpacity onPress={() => setPopup(false)}>
-            <Image source={images.buttonok} style={appStyle.okBtn} />
-          </TouchableOpacity>
-        </ImageBackground>
-      </View>)}
     </ImageBackground>
   );
 };
@@ -155,7 +142,7 @@ export const appStyle = StyleSheet.create({
   },
   turnText: {
     fontSize: 30,
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
   },
   labelText: {
