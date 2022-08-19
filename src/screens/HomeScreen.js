@@ -15,12 +15,6 @@ import { images } from "../assets";
 
 const windowWidth = Dimensions.get('screen').width;
 const windowHeight = Dimensions.get('screen').height;
-const dataButton = [
-  {id: 1, image: images.teaceremony, background: images.teamau}, 
-  {id: 2, image: images.sakura, background: images.sakuramau}, 
-  {id: 3, image: images.phusimoutain, background: images.mautea}, 
-  {id: 4, image: images.kimono, background: images.kimonobackground}
-];
 
 const Home = () => {
   const navigation = useNavigation();

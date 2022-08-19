@@ -49,11 +49,6 @@ const ListScreen = () => {
   }
 
 
-  const onClickBackButton = () => {
-    navigation.goBack();
-  }
-
-
   return (
     <ImageBackground style={appStyle.homeView} source={images.bg1}>
         <View style={appStyle.appBar}>
